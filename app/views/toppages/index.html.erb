@@ -1,5 +1,13 @@
-<div class="center jumbotron">
-  <div class="text-center">
-    <h1>Welcome  to the Microposts</h1>
+<!--トップページ-->
+<% if logged_in? %>
+  <p>ログイン完了ユーザ: <%= current_user.name %></p>
+<% else %>
+<!--　=> class属性にcontainerを指定した要素の内側にジャンボトロンを配置すると角が丸くなる-->
+<!--ユーザ登録リンクを作成　=> Sing up now!　というボタンを付けます。-->
+  <div class="center jumbotron">
+    <div class="text-center">
+      <h1>Welcome to the Microposts</h1>
+      <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
+    </div>
   </div>
-</div>
+<% end %>
