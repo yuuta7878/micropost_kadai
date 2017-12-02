@@ -1,6 +1,18 @@
 <!--トップページ-->
 <% if logged_in? %>
-  <p>ログイン完了ユーザ: <%= current_user.name %></p>
+<div class="row">
+  <aside class="col-md-4">  <!--Micropost 用のフォーム-->
+    <%= form_for(@micropost) do |f| %>
+    <div class="form-group">
+      <%= f.text_area :content, class: 'form-control', rows: 5 %>
+    </div>
+    <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
+    <% end %>
+  </aside>
+  <div class="col-xs-8"> <!--_microposts.html.erbをrenderで読み込む-->
+    <%= render 'microposts/microposts', microposts: @microposts %>
+  </div>
+</div>
 <% else %>
 <!--　=> class属性にcontainerを指定した要素の内側にジャンボトロンを配置すると角が丸くなる-->
 <!--ユーザ登録リンクを作成　=> Sing up now!　というボタンを付けます。-->

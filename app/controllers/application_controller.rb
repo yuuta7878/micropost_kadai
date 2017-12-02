@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
       redirect_to login_url
     end
   end
+  # Micropostの数をカウント => View で表示するときのため
+  def counts(user)
+    @count_microposts = user.microposts.count
+  end
 end
