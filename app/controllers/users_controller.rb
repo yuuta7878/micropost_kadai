@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   # require_user_logged_inは、ログインしていれば何もせず、ログインしていなければログインページに強制的にリダイレクトされる。
-  before_action :require_user_logged_in, only: [:index, :show]
+  before_action :require_user_logged_in, only: [:index, :show, :followers, :followings]
   # 全ユーザ一覧が欲しいのでUser.allで取得、ページネーション適用に必要な記述も追加
     def index
       @users = User.all.page(params[:page])
@@ -46,4 +46,4 @@ class UsersController < ApplicationController
       # password_confirmationは、パスワードの確認のために使用される
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
-  end
+end

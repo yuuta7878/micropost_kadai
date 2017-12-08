@@ -2,7 +2,7 @@ class MicropostsController < ApplicationController
   # MicropostsController の全アクションはログインが必須になる
   before_action :require_user_logged_in
   # 下記によってdestroyアクションが実行される前にcorrect_userが実行される。
-  before_action :content_user, only: [:destroy]
+  before_action :correct_user, only: [:destroy]
   
   def create # メッセージの投稿機能
     @micropost = current_user.microposts.build(micropost_params)
