@@ -11,9 +11,11 @@ class ApplicationController < ActionController::Base
     end
   end
   # Micropostの数をカウント => View で表示するときのため
+  # フォロー／フォロワー数のカウントを View で表示するとき、全ての Controller が使用できるように記述を追加する
   def counts(user)
     @count_microposts = user.microposts.count
     @count_followings = user.followings.count
     @count_followers = user.followers.count
+    @count_favorites = user.favorites.count
   end
 end
