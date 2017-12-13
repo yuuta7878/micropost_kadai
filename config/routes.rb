@@ -17,9 +17,9 @@ Rails.application.routes.draw do
     end
   end
   # create, destroy アクション実装
-  resources :microposts, only: [:create, :destroy, :favorites, :new, :show, :favorites]
+  resources :microposts, only: [:create, :destroy]
   # ログインユーザがユーザをフォロー/アンフォローできるようにするルーティング設定
   resources :relationships, only: [:create, :destroy]
   # ログインユーザーがお気に入り登録できるようにするルーティング設定　12/10
-  resources :favorites, only: [:create, :destroy, :show]
+  resources :favorites, only: [:create, :destroy]
 end
