@@ -15,9 +15,10 @@ class FavoritesController < ApplicationController
     redirect_to root_path
   end
   
-  def index
+  def favorite
     if logged_in?
-      @user = current_user
-      @favorites = current_user.feed_microposts.order('created_at DESC').page(params[:page])
+      @user = current_user.all
+      @favorites = current_user.feed_favorite.order('created_at DESC').page(params[:page])
+    end
   end
 end

@@ -5,7 +5,6 @@ class ToppagesController < ApplicationController
       @micropost = current_user.microposts.build # form_for用
       # 一覧表示用
       @microposts = current_user.feed_microposts.order('created_at DESC').page(params[:page])
-      
     end
   end
   
