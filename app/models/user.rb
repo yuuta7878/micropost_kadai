@@ -3,7 +3,6 @@ class User < ApplicationRecord
   # self.email.downcase! → メールアドレスに、もし大文字（例えば M とか）があれば、これを強制的に小文字（例えば m とか）に変換する
   before_save { self.email.downcase! }
   # nameのバリデーション　カラを許さず５０文字以内
-  validates :user_id, presence: true
   validates :name, presence: true, length: { maximum: 50 }
   validates :email, presence: true, length: { maximum: 255 },
 
@@ -12,7 +11,7 @@ class User < ApplicationRecord
   has_secure_password
   
   # ユーザモデルに書くことによって、主語が「ユーザー」と特定できます
-  # よって、「ユーザーが」「複数の」「マイクロポストを」保持できるという意味になります
+  # よって、「ユーザーが」「複数の」「マイクロポストを」保持  できるという意味になります
   has_many :microposts
   has_many :relationships
   has_many :favorites
